@@ -1,1 +1,52 @@
 hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# Pytest / test cache
+.pytest_cache/
+
+# mypy / pylint / coverage
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Log files
+*.log
+
+# System-specific
+.DS_Store
+Thumbs.db
+
+# dotenv (환경 변수 파일)
+.env
+.env.*
+
+# SQLite DBs or local databases
+*.sqlite3
+*.db
+
+# pip dependency lock (선택)
+pip-log.txt
