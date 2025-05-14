@@ -53,7 +53,13 @@ def replace_and_report_rare_categories(df, columns=None, threshold=0.001):
         value_ratios = df[col].value_counts(normalize=True)
         rare_cats = value_ratios[value_ratios < threshold].index
 
-        # 2. 희귀 범주 → Others로 대체 (in-place)
+        # 2. 희귀 범주 타입 string으로 변환
+        cols_to_convert = ['Facility ID', 'CCS Diagnosis Code', 'CCS Procedure Code', 'APR DRG Code', 'APR MDC Code',\
+                        'APR Severity of Illness Code']
+        if col in cols_to_convert:
+            df[col] = df[col].astype(str)
+
+        # 3. 희귀 범주 → Others로 대체 (in-place)
         df[col] = df[col].apply(lambda x: 'Others' if pd.notnull(x) and x in rare_cats else x)
 
         # 3. Others 비율 계산
