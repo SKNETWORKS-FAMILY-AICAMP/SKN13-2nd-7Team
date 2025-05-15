@@ -11,10 +11,10 @@
 
 | 이름  | 이미지                                       | 이메일               |
 |:------:|:-------------------------------------------:|:--------------------:|
-| 남궁건우 |<img src="img/건우" width="80">      | srrd1357@gmail.com |
-| 장진슬 | <img src="img/진슬" width="80">        | gpendlr@gmail.com |
-| 전진혁 | <img src="img/진혁" width="80">       | jinhyeok2844@naver.com |
-| 홍채우 | <img src="img/채우" width="80">   | codn1016@gmail.com |
+| 남궁건우 |<img src="profile/건우.png " width="80">      | srrd1357@gmail.com |
+| 장진슬 | <img src="profile/진슬,png" width="80">        | gpendlr@gmail.com |
+| 전진혁 | <img src="profile/진혁.png" width="80">       | jinhyeok2844@naver.com |
+| 홍채우 | <img src="profile/채우.png" width="80">   | codn1016@gmail.com |
 
 
 
