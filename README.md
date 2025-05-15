@@ -11,10 +11,10 @@
 
 | 이름  | 이미지                                       | 이메일               |
 |:------:|:-------------------------------------------:|:--------------------:|
-| 남궁건우 |<img src="img/건우" width="80">      | srrd1357@gmail.com |
-| 장진슬 | <img src="img/진슬" width="80">        | gpendlr@gmail.com |
-| 전진혁 | <img src="img/진혁" width="80">       | jinhyeok2844@naver.com |
-| 홍채우 | <img src="img/채우" width="80">   | codn1016@gmail.com |
+| 남궁건우 |<img src="profile/건우.png " width="80">      | srrd1357@gmail.com |
+| 장진슬 | <img src="profile/진슬,png" width="80">        | gpendlr@gmail.com |
+| 전진혁 | <img src="profile/진혁.png" width="80">       | jinhyeok2844@naver.com |
+| 홍채우 | <img src="profile/채우.png" width="80">   | codn1016@gmail.com |
 
 
 
@@ -44,9 +44,9 @@
 > 특히 다음과 같은 이탈 유형 퇴원은 병원의 경영에 부정적인 영향을 준다:
 
 > Left Against Medical Advice (LAMA)
-> → 의사의 권고를 무시하고 자의로 퇴원하는 경우
->
-> 이러한 환자군은 병원 수익 손실, 병상 회전율 저하, 의료 품질 지표 악화로 이어질 수 있다.
+> 
+> 의사의 권고를 무시하고 자의로 퇴원하는 경우
+> 병원 수익 손실, 병상 회전율 저하, 의료 품질 지표 악화로 이어질 수 있다.
 
 <br/><br/>
 
