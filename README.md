@@ -69,7 +69,7 @@
 ### 🔍 프로젝트 소개, 목표 
 🔗 목표: 이탈 환자 예측하는 이진 분류 모델 개발
 
-📂 사용 데이터: 뉴욕주 병원 입원 퇴원 데이터 (2010년)
+📂 사용 데이터: 뉴욕주 병원 입원 퇴원 데이터 (2010년)\
 ↳ Kaggle dataset: hospital-inpatient-discharges-sparcs.csv
 
 <br/><br/>
