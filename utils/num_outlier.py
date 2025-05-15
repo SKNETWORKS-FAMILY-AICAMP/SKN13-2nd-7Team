@@ -43,28 +43,25 @@ def plot_zscore_outliers_all(df, columns, bins_list, z_thresh=2):
 # 이상치 제거 함수
 def remove_zscore_outliers_all(df, columns, z_thresh=2):
     """
-    여러 컬럼에 대해 Z-score 기반 이상치를 포함한 행을 제거한 DataFrame을 반환합니다.
+    Z-score 기반 이상치를 포함한 행을 제거한 DataFrame을 반환합니다.
 
     Parameters:
-    - df: pandas DataFrame
-    - columns: 수치형 컬럼 리스트
-    - z_thresh: 이상치 판단 기준 Z-score 값 (기본: 2)
+    - df (pd.DataFrame): 원본 데이터프레임
+    - columns (list): 수치형 컬럼 리스트
+    - z_thresh (float): 이상치 판단 기준 Z-score 값 (기본값: 2)
 
     Returns:
-    - pd.DataFrame: 이상치 제거 후 DataFrame
+    - pd.DataFrame: 이상치 제거 후의 새로운 DataFrame
     """
-    df_clean = df.copy()
+    if columns is None:
+        raise ValueError("'columns' 인자에 수치형 컬럼 리스트를 지정해야 합니다.")
+    
+    df_new = df.copy()
     mask = pd.Series(False, index=df.index)
 
     for col in columns:
-        data = df[col].dropna()
-        zscores = zscore(data)
-        outliers = (zscores > z_thresh) | (zscores < -z_thresh)
-        outlier_idx = data[outliers].index
+        zscores = zscore(df_new[col].dropna())
+        outlier_idx = df_new[col].dropna().index[(zscores > z_thresh) | (zscores < -z_thresh)]
         mask[outlier_idx] = True
 
-    removed_count = mask.sum()
-    print(f"\n총 제거된 이상치 행 수: {removed_count}개")
-
-    return df_clean[~mask]
-
+    return df_new[~mask]
