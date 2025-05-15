@@ -22,7 +22,7 @@ Left Against Medical Advice   -    의사 권고 없이 자의 퇴원
 
 | 작업 명             | 시작일 | 종료일 | 담당자                | 산출물                 | 의존 작업           |
 |------------------|:------:|:------:|-------------------|----------------------|------------------|
-| 프로젝트 주제 선정    | 05-12 | 05-12 | 남궁건우, 전진혁, 장진슬, 홍채우                 | 없음                  | 없음              |
+| 프로젝트 주제 선정    | 05-12 | 05-12 | 전진혁, 장진슬                 | 없음                  | 없음              |
 | 데이터 전처리        | 05-12 | 05-12 | 남궁건우, 전진혁, 장진슬 | 코드                  | csv파일    |
 | 모델링             | 05-12 | 05-12 | 남궁건우, 전진혁         | 코드                  | csv파일    |
 | 이진분류 및 모델링 시각화| 05-12 | 05-12 | 장진슬, 전진혁                |  코드                | 데이터 전처리, 모델링  |
@@ -184,7 +184,7 @@ SKN13-2nd-7Team
 
 - 정규분포 Z-score 기반 이상치 제거
 
-- 빈도 낮은 범주는 others 통합
+- 빈도 낮은 범주는 "Others" 통합
 
 <br/><br/>
 
@@ -251,6 +251,51 @@ SKN13-2nd-7Team
 <br/><br/>
 
 
+| APR DRG Code | APR DRG Description                                               |
+| ------------ | ----------------------------------------------------------------- |
+| 770          | Alcohol and Drug Abuse or Dependence                              |
+| 894          | Alcohol, drug abuse, or dependence, classified within the Medical (Med) and Psychiatric (Psych) domains |
+| 816          | Other Gastrointestinal Diagnoses                                  |
+| 892          | Psychoses                                                         |
+| 662          | Kidney and Urinary Tract Infections                               |
+| 890          | Mental Retardation                                                |
+| 280          | Trauma to the Skin, Subcutaneous Tissue and Breast                |
+| 282          | Trauma to the Musculoskeletal System and Connective Tissue        |
+| 566          | Other Antepartum Diagnoses                                        |
+| 251          | Non-Bacterial Gastroenteritis, Nausea, Vomiting, and Diarrhea     |
+
+
+
+<br/><br/>
+
+| 순위 | 병명 (한글 번역)             | 이탈률   |
+| -- | ---------------------- | ----- |
+| 1  | 알코올 및 약물 남용 또는 의존      | 100%  |
+| 2  | 의학/정신과 영역 알코올·약물 남용/의존 | 13.9% |
+| 3  | 기타 위장관 질환              | 13.4% |
+| 4  | 정신병                    | 11.8% |
+| 5  | 신장 및 요로 감염             | 10.7% |
+| 6  | 지적 장애                  | 8.5%  |
+| 7  | 피부·피하조직·유방 손상          | 6.4%  |
+| 8  | 근골격계 및 결합조직 손상         | 6.2%  |
+| 9  | 기타 산전 진단               | 6.0%  |
+| 10 | 비세균성 위장염·구토·설사         | 5.9%  |
+
+
+인사이트
+
+
+**정신·약물 관련 질환군(770, 894, 892, 890)**이 특히 이탈률이 높습니다.
+
+이는 해당 질환을 가진 환자들이 치료 지속에 대한 순응도가 낮거나, 병원 체류에 대한 거부감이 높음을 시사합니다.
+
+병원 입장에서 이들 환자군은 이탈 위험군으로 분류되어야 하며, 입원 중 적극적인 상담, 가족 협력 강화 등이 요구됩니다.
+<br/><br/>
+
+<br/><br/>
+
+
+
 
 💡 주요 해석 및 인사이트
 이탈 환자는 소수 클래스이기 때문에 모델이 예측하기 어려운 문제.
@@ -259,9 +304,15 @@ Precision이 높아도 Recall이 낮으면 실제 이탈 환자를 놓칠 수 �
 의료 안전과 예방 목적이라면 Recall을 높이는 방향의 threshold 조정이 중요하다. 
 (병원 입장에서는 실제 이탈 환자를 최대한 잡아내는 것이 중요하기 때문에, recall이 낮은 모델은 주의해야함)
 
+
+
 SHAP 해석을 통해 어떤 변수들이 이탈 예측에 영향을 주는지도 확인
 
-**Length of Stay**, **Type of Admission**, **Severity of Illness** 등이 주요 변수로 작용함을 확인??? 이거 다시 확인 
+
+
+
+
+
 
 
 
