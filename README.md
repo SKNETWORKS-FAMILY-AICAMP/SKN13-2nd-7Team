@@ -251,24 +251,41 @@ SKN13-2nd-7Team
 <br/><br/>
 
 
-
-| APR DRG Code | 영문 설명                                                             | 한글 번역                                  |
-| ------------ | ----------------------------------------------------------------- | -------------------------------------- |
-| 640          | NEONATE BIRTHWT >2499G, NORMAL NEWBORN OR NEONATE W OTHER PROBLEM | 신생아 체중 >2499g, 정상 신생아 또는 기타 문제를 가진 신생아 |
-| 560          | VAGINAL DELIVERY                                                  | 자연 분만                                  |
-| Others       | Others                                                            | 기타                                     |
-| 540          | CESAREAN DELIVERY                                                 | 제왕절개 분만                                |
-| 194          | HEART FAILURE                                                     | 심부전                                    |
-| 139          | OTHER PNEUMONIA                                                   | 기타 폐렴                                  |
-| 140          | CHRONIC OBSTRUCTIVE PULMONARY DISEASE                             | 만성 폐쇄성 폐질환 (COPD)                      |
-| 720          | SEPTICEMIA & DISSEMINATED INFECTIONS                              | 패혈증 및 전신성 감염                           |
-| 383          | CELLULITIS & OTHER BACTERIAL SKIN INFECTIONS                      | 봉와직염 및 기타 세균성 피부 감염                    |
-| 203          | CHEST PAIN                                                        | 흉통                                     |
+| APR DRG Code | APR DRG Description                                               |
+| ------------ | ----------------------------------------------------------------- |
+| 770          | Alcohol and Drug Abuse or Dependence                              |
+| 894          | Alcohol, drug abuse, or dependence, classified within the Medical (Med) and Psychiatric (Psych) domains |
+| 816          | Other Gastrointestinal Diagnoses                                  |
+| 892          | Psychoses                                                         |
+| 662          | Kidney and Urinary Tract Infections                               |
+| 890          | Mental Retardation                                                |
+| 280          | Trauma to the Skin, Subcutaneous Tissue and Breast                |
+| 282          | Trauma to the Musculoskeletal System and Connective Tissue        |
+| 566          | Other Antepartum Diagnoses                                        |
+| 251          | Non-Bacterial Gastroenteritis, Nausea, Vomiting, and Diarrhea     |
 
 
 
 <br/><br/>
 
+| 순위 | 병명 (한글 번역)             | 이탈률   |
+| -- | ---------------------- | ----- |
+| 1  | 알코올 및 약물 남용 또는 의존      | 100%  |
+| 2  | 의학/정신과 영역 알코올·약물 남용/의존 | 13.9% |
+| 3  | 기타 위장관 질환              | 13.4% |
+| 4  | 정신병                    | 11.8% |
+| 5  | 신장 및 요로 감염             | 10.7% |
+| 6  | 지적 장애                  | 8.5%  |
+| 7  | 피부·피하조직·유방 손상          | 6.4%  |
+| 8  | 근골격계 및 결합조직 손상         | 6.2%  |
+| 9  | 기타 산전 진단               | 6.0%  |
+| 10 | 비세균성 위장염·구토·설사         | 5.9%  |
+
+**정신·약물 관련 질환군(770, 894, 892, 890)**이 특히 이탈률이 높습니다.
+
+이는 해당 질환을 가진 환자들이 치료 지속에 대한 순응도가 낮거나, 병원 체류에 대한 거부감이 높음을 시사합니다.
+
+병원 입장에서 이들 환자군은 이탈 위험군으로 분류되어야 하며, 입원 중 적극적인 상담, 가족 협력 강화 등이 요구됩니다.
 <br/><br/>
 
 <br/><br/>
