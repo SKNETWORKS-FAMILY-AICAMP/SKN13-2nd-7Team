@@ -184,7 +184,7 @@ SKN13-2nd-7Team
 
 - 정규분포 Z-score 기반 이상치 제거
 
-- 빈도 낮은 범주는 others 통합
+- 빈도 낮은 범주는 "Others" 통합
 
 <br/><br/>
 
