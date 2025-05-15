@@ -3,7 +3,7 @@ from sklearn.pipeline import Pipeline
 import pickle
 import os
 
-def get_best_model(model, params, preprocessor, X_train, y_train):
+def get_best_model(name, model, params, preprocessor, X_train, y_train):
     '''
     모델과 파라미터, 전처리기를 입력받아 최적의 모델을 찾는 함수
     최적 모델은 {model}_model.pkl 파일로 저장
@@ -21,13 +21,6 @@ def get_best_model(model, params, preprocessor, X_train, y_train):
         best_params(dict): 최적 파라미터
         best_score(dict): 최적 모델의 평가지표
     '''
-    # 파라미터 그리드 정의
-    params = {
-        'model__C': [0.001, 0.01, 0.1, 1, 10, 100],
-        'model__penalty': ['l1', 'l2'],
-        'model__solver': ['liblinear', 'saga']
-    }
-
     # 원-핫 인코딩을 사용하는 파이프라인 객체 생성 
     pipeline = Pipeline([
         ('preprocessor', preprocessor), 
@@ -59,7 +52,7 @@ def get_best_model(model, params, preprocessor, X_train, y_train):
     best_model = rs.best_estimator_
     models_dir = 'models'
     os.makedirs(models_dir, exist_ok=True)
-    with open(os.path.join(models_dir, f'{model}_model.pkl'), 'wb') as f:
+    with open(os.path.join(models_dir, f'{name}_model.pkl'), 'wb') as f:
         pickle.dump(best_model, f)
 
     # 최적 모델, 최적 파라미터, 평가지표 반환
