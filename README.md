@@ -43,7 +43,7 @@
 
 > 특히 다음과 같은 이탈 유형 퇴원은 병원의 경영에 부정적인 영향을 준다:
 
-> Left Against Medical Advice (LAMA)
+> Left Against Medical Advice (LAMA)/
 > → 의사의 권고를 무시하고 자의로 퇴원하는 경우
 > 병원 수익 손실, 병상 회전율 저하, 의료 품질 지표 악화로 이어질 수 있다.
 
