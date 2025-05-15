@@ -252,6 +252,30 @@ SKN13-2nd-7Team
 
 
 
+| APR DRG Code | 영문 설명                                                             | 한글 번역                                  |
+| ------------ | ----------------------------------------------------------------- | -------------------------------------- |
+| 640          | NEONATE BIRTHWT >2499G, NORMAL NEWBORN OR NEONATE W OTHER PROBLEM | 신생아 체중 >2499g, 정상 신생아 또는 기타 문제를 가진 신생아 |
+| 560          | VAGINAL DELIVERY                                                  | 자연 분만                                  |
+| Others       | Others                                                            | 기타                                     |
+| 540          | CESAREAN DELIVERY                                                 | 제왕절개 분만                                |
+| 194          | HEART FAILURE                                                     | 심부전                                    |
+| 139          | OTHER PNEUMONIA                                                   | 기타 폐렴                                  |
+| 140          | CHRONIC OBSTRUCTIVE PULMONARY DISEASE                             | 만성 폐쇄성 폐질환 (COPD)                      |
+| 720          | SEPTICEMIA & DISSEMINATED INFECTIONS                              | 패혈증 및 전신성 감염                           |
+| 383          | CELLULITIS & OTHER BACTERIAL SKIN INFECTIONS                      | 봉와직염 및 기타 세균성 피부 감염                    |
+| 203          | CHEST PAIN                                                        | 흉통                                     |
+
+
+
+<br/><br/>
+
+<br/><br/>
+
+<br/><br/>
+
+
+
+
 💡 주요 해석 및 인사이트
 이탈 환자는 소수 클래스이기 때문에 모델이 예측하기 어려운 문제.
 
