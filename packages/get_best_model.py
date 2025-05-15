@@ -18,8 +18,6 @@ def get_best_model(name, model, params, preprocessor, X_train, y_train):
 
     Returns:
         best_model: 최적 모델
-        best_params(dict): 최적 파라미터
-        best_score(dict): 최적 모델의 평가지표
     '''
     # 원-핫 인코딩을 사용하는 파이프라인 객체 생성 
     pipeline = Pipeline([
@@ -56,4 +54,4 @@ def get_best_model(name, model, params, preprocessor, X_train, y_train):
         pickle.dump(best_model, f)
 
     # 최적 모델, 최적 파라미터, 평가지표 반환
-    return best_model, rs.best_params_, rs.scoring
+    return best_model
