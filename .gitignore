@@ -1,6 +1,7 @@
 hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv
 packages/__pycache__/category_utils.cpython-312.pyc
 # Byte-compiled / optimized / DLL files
+utils/__pycache__/
 __pycache__/
 *.py[cod]
 *$py.class
