@@ -35,7 +35,7 @@ def plot_zscore_outliers_all(df, columns, bins_list, z_thresh=2):
         plt.xlim(-5, 5)
         plt.grid(True)
         plt.legend()
-
+    plt.savefig('images/Num_Columns_Outliers.png', dpi=300, bbox_inches='tight')
     plt.tight_layout()
     plt.show()
 
