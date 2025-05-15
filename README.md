@@ -2,7 +2,7 @@
 
 # 환자 이탈 예측 프로젝트 
 ## Predicting Patient Disposition with Machine Learning
-
+Left Against Medical Advice   -    의사 권고 없이 자의 퇴원 
 
 
 ## 👥 팀원 소개 
