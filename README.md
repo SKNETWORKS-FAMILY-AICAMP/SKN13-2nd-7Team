@@ -78,7 +78,53 @@ Left Against Medical Advice   -    의사 권고 없이 자의 퇴원
 
 ---
 
-# 2. 프로젝트 구 조 ~~!@  -진혁 
+# 2. 프로젝트 구조
+```
+SKN13-2nd-7Team
+│
+|
+├── images/
+|    ├── PR_Curve.png
+|    ├── Rader_Chart.png
+|    ├── ROC_Curve.png
+│
+├── models/
+│   ├── LogisticRegression_model.pkl              # 로지스틱 회귀 모델 (F1: )
+│   ├── RandomForestClassifier_model.pkl        # 랜덤 포레스트 분류 모델 (F1: )
+│   ├── XGBClassifier_model.pkl             	    # XGBoost 분류 모델 (F1: )
+│   ├── model_resurts.csv                  	    # 모델 예측 결과
+|
+├── preprocessor/
+│   ├── preprocessor.pkl
+│   ├── preprocessor2.pkl
+│                     
+├── raw_data/
+│   ├── hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv 	# 병원 이탈자 전체 데이터셋
+| 
+├── utils/
+│   ├── __pycache__/       
+|          ├── 
+│   ├── __init__.py
+│   ├── cate_outlier.py 
+│   ├── get_best_model.py
+│   ├── num_outlier.py 
+│    
+├── 산출물/
+│   ├── XGBoost - Confusion Matrix.png
+│   ├── XGBoost - Feature Importance (Top 10).png
+│   ├── XGBoost - ROC Curve.png
+│   ├── XGBoost_best_model.pkl
+│   ├── [OT] 2025_플레이데이터_OT_SK네트웍스 Family AI 캠프 12기.pdf   # ppt 자료 pdf
+│   ├── data_preprocessing.csv   # 전처리 데이터
+│   ├── label_encoder.pkl
+│   └── 모델학습결과.csv    
+│   
+│
+├── README.md/                        
+├── app.py/                             
+└── requirements.txt
+```
+
 # 2. 프로젝트 
 
 ## 2-1. 사용한 기술 스택
