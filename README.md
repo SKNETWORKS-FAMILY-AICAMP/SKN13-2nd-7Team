@@ -79,6 +79,7 @@ Left Against Medical Advice   -    의사 권고 없이 자의 퇴원
 ---
 
 # 2. 프로젝트 구조
+```
 SKN13-2nd-7Team
 │
  |
@@ -121,7 +122,8 @@ SKN13-2nd-7Team
 │
 ├── README.md/                        
 ├── app.py/                             
-└── requirements.txt          
+└── requirements.txt
+```
 
 # 2. 프로젝트 
 
