@@ -1,14 +1,15 @@
 import streamlit as st
+
+# 반드시 첫 Streamlit 명령어로 호출
+st.set_page_config(page_title="환자 이탈 예측 시스템", layout="wide")
+
+# 이후 일반 모듈 import
 import pandas as pd
 import pickle
 from streamlit_option_menu import option_menu
 
+# 그 다음 내부 모듈 import
 from modules import about, data, prediction, dashboard
-
-# 페이지 설정
-st.set_page_config(page_title="환자 이탈 예측 시스템", layout="wide")
-
-
 
 with st.sidebar:
     selected = option_menu(
