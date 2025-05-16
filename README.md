@@ -334,26 +334,32 @@ SKN13-2nd-7Team
 
 ### 5-4. 튜닝 과정과 결과 시각화 
 
-* 과정 
+* 과정
+
 <img src="readme_img/XGB boost - F1 score vs Sample size.png>
 
-* 결과 
-<img src="readme_img/XGBoost-Threshold vs F1:precision:recall.png>
+<br/>
+* 결과
 
-<img src="readme_img/XGB boost- Confusion Matrix.png>
+<img src="readme_img/XGBoost-Threshold vs F1:precision:recall.png" width="240">
 
-<img src="readme_img/XGBoost - Precision Recall Curve .png>
+<img src="readme_img/XGB boost- Confusion Matrix.png" width="240">
 
-<img src="readme_img/XGB boost- ROC Curve.png>
+<img src="readme_img/XGBoost - Precision Recall Curve .png" width="240">
+
+<img src="readme_img/XGB boost- ROC Curve.png" width="240">
 
 
+<br/>
+<br/>
 
+---
 
 ## 6. Feature Importances 파악하기 
 
 
-<img src="readme_img/top 10 Featuree Importances(XGBoost).png>
-
+<img src="readme_img/top 10 Featuree Importances(XGBoost).png" width="240">
+<br/>
 ### 환자 이탈 중요 요인
 - 성별
 - 나이
