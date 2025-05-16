@@ -256,8 +256,22 @@ SKN13-2nd-7Team
 
 ## 5-2. 하이퍼파라미터 튜닝 (XGBoost 기준)
 
+### 📊 Test Set Evaluation (Best XGBoost)
 
-<br/>
+| Class | Precision | Recall | F1 Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0 (정상 퇴원) | 0.98 | 1.00 | 0.99 | 48,510 |
+| 1 (이탈 퇴원) | 0.89 | 0.32 | 0.47 | 1,123 |
+
+| 지표 종류       | Precision | Recall | F1 Score |
+|----------------|-----------|--------|----------|
+| Accuracy        | -         | -      | **0.98** |
+| Macro Average   | 0.94      | 0.66   | 0.73     |
+| Weighted Average| 0.98      | 0.98   | 0.98     |
+
+> ✅ **F1 Score (Test 기준): 0.4739**
+
+
 <br/>
 <br/>
 
@@ -280,8 +294,10 @@ SKN13-2nd-7Team
 | 0.45      | 0.9372    | 0.3354 | 0.4940   |
 | 0.50      | 0.9656    | 0.3263 | 0.4878   |
 
+
 ✅ **최적 Threshold = 0.30**,  
 → **F1 Score가 0.5153**으로 **기본보다 향상**됨
+<br/>
 <br/>
 
 ### F1 score 향상 전 XGBoost 성능 
@@ -302,30 +318,32 @@ SKN13-2nd-7Team
 
 
 
-주요 인사이트
-LAMA는 **전체의 약 2%**밖에 되지 않아 클래스 불균형 문제를 반드시 고려해야 함
+💡 주요 인사이트
 
-높은 정밀도만으론 부족 → Recall 또한 중요
+- LAMA는 **전체의 약 2%**밖에 되지 않아 클래스 불균형 문제를 반드시 고려해야 함
 
-Threshold 조정은 모델의 실용성과 경고 민감도 사이 균형을 맞추는 핵심 전략
+- Threshold 조정은 모델의 실용성과 경고 민감도 사이 균형을 맞추는 핵심 전략
 
-병원이 실제로 활용할 경우, "최대한 많은 이탈 환자를 사전 탐지"하는 것이 중요 → Recall 중심의 설계가 바람직
+- 병원이 이 모델을 실제로 활용할 경우, "최대한 많은 이탈 환자를 사전 탐지"하는 것이 중요
+- → Precision이나 Recall은 활용에 따라 중요도가 달라지기 때문에, 우리팀은 F1 Score 기준으로 모델을 선정하였다. 
 
 
 <br/>
 <br/>
 
-### 5-4. 튜닝 과정 
+### 5-4. 튜닝 과정과 결과 시각화 
 
-# readme_img/ XGBoost Threshold vs F1 / Precision / Recall 얘 넣기
+* 과정 
+<img src="readme_img/XGB boost - F1 score vs Sample size.png>
 
-# readme_img/ XGB boost- Confusion Matrix.png
+* 결과 
+<img src="readme_img/XGBoost-Threshold vs F1:precision:recall.png>
 
-# readme_img / 프리시전 리컬커브.png
+<img src="readme_img/XGB boost- Confusion Matrix.png>
 
-# XGB boost- ROC Curve.png
+<img src="readme_img/XGBoost - Precision Recall Curve .png>
 
-# XGB boost- F1 score & Sample size 
+<img src="readme_img/XGB boost- ROC Curve.png>
 
 
 
@@ -333,24 +351,7 @@ Threshold 조정은 모델의 실용성과 경고 민감도 사이 균형을 맞
 ## 6. Feature Importances 파악하기 
 
 
-# top 10 Featuree Importances(XGBoost).png
-
-# 젠더별 , 응급별, 인종별, 병명 코드별, 나이, 입원 기간 그래프 만들기!!!!!!!!! 
-
-
-
-
-<br/><br/>
-
-## 7. 
-
-<br/><br/>
-
-## 8. 주요 변수 영향도 및 이탈률 분석
-Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요인을 선별하고, 각 변수별 이탈 패턴을 구체적으로 해석
-
-<img - 성능~~ > 
-발생 요인
+<img src="readme_img/top 10 Featuree Importances(XGBoost).png>
 
 ### 환자 이탈 중요 요인
 > 성별
@@ -360,42 +361,16 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 > 병명 코드 (정신 질환, 약물/알코올 중독)
 > 입원 기간
 
+<br/><br/>
+
+## 7.  주요 변수 영향도 및 이탈률 분석
+Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요인을 선별하고, 각 변수별 이탈 패턴을 구체적으로 해석
+
+# 리드미 캡쳐가 들어야할거같아ㅏㅏㅏ 
 
 <br/><br/>
 
-
-
-🧠 요약 인사이트
-가장 높은 이탈률 변수: 총 비용, 입원 첫날, 청구금액이 낮은 경우
-
-병원 경영 관점 해석:
-
-비용 낮고 입원 짧을수록 이탈 가능성 ↑
-
-자원 투입 많을수록 이탈률 ↓ → 그러나 이탈 시 손실 ↑
-
-
-행동 제안:
-
-초기 환자 경험 개선 (응급실, 접수, 설명)
-
-저비용 환자 대상 조기 경고 시스템 도입
-
-이탈 위험군(‘Others’, 응급)에는 사전 개입 체계 강화 필요
-
-
-
-
-
-💡 주요 해석 및 인사이트
-이탈 환자는 소수 클래스이기 때문에 모델이 예측하기 어려운 문제.
-
-Precision이 높아도 Recall이 낮으면 실제 이탈 환자를 놓칠 수 있으므로, 
-의료 안전과 예방 목적이라면 Recall을 높이는 방향의 threshold 조정이 중요하다. 
-(병원 입장에서는 실제 이탈 환자를 최대한 잡아내는 것이 중요하기 때문에, recall이 낮은 모델은 주의해야함)
-
-
-
+## 8. 모델 활용성, 
 
 
 
