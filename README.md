@@ -412,6 +412,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 **응급실 방문 여부**
+
 <img src="readme_img/FI_응급실 방문 여부에 따른 이탈률.png" width="500">
 
 > 응급실을 거쳐 입원한 환자들이 비응급 환자보다 자의 퇴원 가능성이 2배 이상 높다.\
@@ -419,12 +420,14 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 **인종**
+
 <img src="readme_img/FI_인종별 환자 이탈률.png" width="500">
 
 > 흑인 환자군에서 이탈 비율이 상대적으로 높게 나옴.
 <br/>
 
 **APR 입원유형별**
+
 <img src="readme_img/FI_APR 입원유형별 환자 이탈률.png" width="500">
 
 > 대부분의 이탈은 Medical 환자에서 발생하고 있으며, 이는 만성질환이나 비응급적 상황.\
@@ -432,6 +435,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 **나이**
+
 <img src="readme_img/FI_연령대별 환자 이탈률.png" width="500">
 
 > **고령층(70세 이상)**과 **소아/청소년(0~17세)**는 이탈률이 매우 낮으며, 이는 보호자, 의료 권고 순응도, 응급도와 관련 있을 수 있다.\
@@ -439,6 +443,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 **진단병명코드**
+
 <img src="readme_img/FI_진단 코드별 환자 이탈률.png" width="500">
 
 > 약물·알코올 중독 관련 DRG에서 이탈률이 무려 100%.\
@@ -447,6 +452,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 **입원기간**
+
 <img src="readme_img/FI_입원일수별 환자 이탈률.png" width="500">
 
 > 입원 1일차 환자의 이탈률이 가장 높음.\
