@@ -4,7 +4,6 @@ import pandas as pd
 import pickle
 import os
 from sklearn.pipeline import make_pipeline
-import random
 
 cate_columns = ["Gender", "Age Group", "Race"]
 
@@ -18,11 +17,11 @@ def load_model():
 # 
 @st.cache_resource
 def load_preprocessors(pre_dir):
-    with open(os.path.join(pre_dir, 'cat_preprocessor'), 'rb') as f:
+    with open(os.path.join(pre_dir, 'cat_preprocessor.pkl'), 'rb') as f:
         cat_pre = pickle.load(f)
-    with open(os.path.join(pre_dir, 'num_imputer'), 'rb') as f:
+    with open(os.path.join(pre_dir, 'num_imputer.pkl'), 'rb') as f:
         num_pre = pickle.load(f)
-    with open(os.path.join(pre_dir, 'scaler'), 'rb') as f:
+    with open(os.path.join(pre_dir, 'scaler.pkl'), 'rb') as f:
         scaler = pickle.load(f)
     return cat_pre, num_pre, scaler
 
@@ -249,15 +248,17 @@ def show():
         
         # 컬럼 분리
         num_columns = ['Total Charges', 'Total Costs', 'Length of Stay']
-        cate_columns = [
-            'Gender', 'Race', 'Age Group', 'Type of Admission', 'Emergency Department Indicator', 
-            'Health Service Area', 'Hospital County', 'Facility ID', 'Facility Name', 'Ethnicity', 
-            'CCS Diagnosis Description', 'CCS Procedure Description', 'APR DRG Description', 
-            'APR DRG Code', 'APR MDC Code', 'APR MDC Description', 'APR Severity of Illness Description', 
-            'APR Severity of Illness Code', 'APR Risk of Mortality', 'APR Medical Surgical Description', 
-            'Source of Payment 1', 'Abortion Edit Indicator', 'Discharge Year', 'CCS Diagnosis Code', 'CCS Procedure Code'
-        ]
-        # cate_columns = [col for col in input_df.columns if col not in num_columns]
+        cate_columns = ['Health Service Area', 'Hospital County', 'Facility ID',
+            'Facility Name', 'Age Group', 'Gender', 'Race', 'Ethnicity',
+            'Type of Admission', 'Discharge Year', 'CCS Diagnosis Code',
+            'CCS Diagnosis Description', 'CCS Procedure Code',
+            'CCS Procedure Description', 'APR DRG Code', 'APR DRG Description',
+            'APR MDC Code', 'APR MDC Description',
+            'APR Severity of Illness Code',
+            'APR Severity of Illness Description', 'APR Risk of Mortality',
+            'APR Medical Surgical Description', 'Source of Payment 1',
+            'Abortion Edit Indicator', 'Emergency Department Indicator'
+            ]
 
         # 주어진 피처 순서 리스트
         feature_names = [
@@ -274,19 +275,19 @@ def show():
         ]
 
         # input_df 컬럼 순서를 모델 학습 때 컬럼 순서대로 재정렬
-        # input_df = input_df[feature_names]
+        input_df = input_df[feature_names]
+        
+        # 전처리 적용
+        X_num = num_preprocessor.transform(input_df[num_columns])
+        X_cat = cat_preprocessor.transform(input_df[cate_columns])
 
-        # # 전처리 적용
-        # X_num = num_preprocessor.transform(input_df[num_columns])
-        # X_cat = cat_preprocessor.transform(input_df[cate_columns])
-
-        # # 두 전처리 결과 결합
-        # X_input = np.hstack([X_cat, X_num])
-        # X_test = scaler.transform(X_input)
+        # 두 전처리 결과 결합
+        X_input = np.hstack([X_cat, X_num])
+        X_test = scaler.transform(X_input)
 
         # 예측
-        # pred_prob = model.predict_proba(X_test)[0][1]
-        # pred_result = round(pred_prob * 100, 1)
-        pred_result = round(random.uniform(0.0, 0.18) * 100, 1) 
+        pred_prob = model.predict_proba(X_test)[0][1]
+        pred_result = round(pred_prob * 100, 1)
+
 
     st.markdown(f"### 이탈 가능성 예측 결과: **{pred_result}%**")
