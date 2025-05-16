@@ -262,10 +262,10 @@ SKN13-2nd-7Team
 
 > 기본적으로 SMOTE는 Train set에만 적용되기 때문에, Test Set의 이탈 환자 수(y=1)가 너무 적어 모델 평가에 신뢰도가 떨어지는 문제가 있었다. 
 
-* 전처리 결과 후에도 데이터 수가 250만개에 육박하는 거대 데이터였기에, trainset과 testset의 size 비율을 수정하며 진행\
-* trainset size : testset size = 1:1 유지하면서 키워가며 최적의 size 찾음(거대 데이터였기에 가능)\
-* 사이즈 train = test = 0.02로 시작\
-* 최대 30%(train = test = 0.3)까지 점진적으로 확장하면서 적절한 분할 비율을 탐색\
+* 전처리 결과 후에도 데이터 수가 250만개에 육박하는 거대 데이터였기에, trainset과 testset의 size 비율을 수정하며 진행.
+* trainset size : testset size = 1:1 유지하면서 키워가며 최적의 size 탐색(거대 데이터였기에 가능).
+* 사이즈 train = test = 0.02로 시작.
+* 최대 30%(train = test = 0.3)까지 점진적으로 확장하면서 적절한 분할 비율을 탐색.
 * Train : Test = 7:3 구성으로 안정적인 평가가 가능해졌다.
  
 <br/>
