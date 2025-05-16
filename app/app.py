@@ -13,7 +13,7 @@ from modules import about, data, prediction, dashboard
 
 with st.sidebar:
     selected = option_menu(
-        menu_title="사이드바 이름수정",
+        menu_title= "",
         options= ['About', 'Data', 'Prediction', 'Dashboard'],
         # icons=[],
         default_index=0, # 선택 인덱스 디폴트값
