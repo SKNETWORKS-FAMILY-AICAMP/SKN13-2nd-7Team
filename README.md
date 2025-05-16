@@ -241,7 +241,7 @@ SKN13-2nd-7Team
 
 
 >> F1 Score 기준으로 가장 균형 잡힌 성능을 보인 **XGBoost**가 실용성과 성능 모두에서 우수하다고 인식.
- >> > 그 중 F1 Score 기준, XGBoost 모델이 가장 우수하여, XGBoost 모델을 선정. 
+ >> 그 중 F1 Score 기준, XGBoost 모델이 가장 우수하여, XGBoost 모델을 선정. 
 
 <br/><br/>
 
@@ -267,7 +267,6 @@ SKN13-2nd-7Team
 * trainset size : testset size = 1:1 유지하면서 키워가며 최적의 size 탐색(거대 데이터였기에 가능).
 * 사이즈 train = test = 0.02로 시작.
 * 최대 30%(train = test = 0.3)까지 점진적으로 확장하면서 적절한 분할 비율을 탐색.
-* Train : Test = 7:3 구성으로 안정적인 평가가 가능해졌다.
  
 <br/>
 
