@@ -334,10 +334,13 @@ SKN13-2nd-7Team
 
 ### 5-4. 튜닝 과정과 결과 시각화 
 
-* 과정 
+* 과정
+'''
 <img src="readme_img/XGB boost - F1 score vs Sample size.png>
-
-* 결과 
+'''
+<br/>
+* 결과
+'''
 <img src="readme_img/XGBoost-Threshold vs F1:precision:recall.png>
 
 <img src="readme_img/XGB boost- Confusion Matrix.png>
@@ -345,7 +348,7 @@ SKN13-2nd-7Team
 <img src="readme_img/XGBoost - Precision Recall Curve .png>
 
 <img src="readme_img/XGB boost- ROC Curve.png>
-
+'''
 
 
 
