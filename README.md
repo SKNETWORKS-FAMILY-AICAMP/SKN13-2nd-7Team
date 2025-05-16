@@ -2,7 +2,6 @@
 
 # 환자 이탈 예측 프로젝트 
 ## Predicting Patient Disposition with Machine Learning
-<br/>
 
 ### 타겟 컬럼명 : Patient Disposition (환자의 퇴원 방식)<br>
 ### 타겟 값 : Left Against Medical Advice (의학적 권고에도 불구하고 스스로 병원을 떠나는 환자)
