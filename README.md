@@ -94,7 +94,7 @@ Left Against Medical Advice (LAMA) - 의학적 권고에도 불구하고 스스�
 📂 사용 데이터: 뉴욕주 병원 입원 퇴원 데이터 (2010년)\
 ↳ Kaggle dataset: hospital-inpatient-discharges-sparcs.csv\
 ↳ 크기: 156만 개\
-↳ 특성(컬럼): 총 37개 (범주형/수치형 혼합) / 이후 사용한 컬럼은 29개\
+↳ 특성(컬럼): 총 37개 (범주형/수치형 혼합) / 이후 사용한 컬럼은 29개
 
 <br/><br/>
 
