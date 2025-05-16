@@ -8,7 +8,7 @@
 
 <br/><br/>
 
-👥 팀원 소개 
+**👥 팀원 소개**
 ### 팀명 : 도망가지마!!!! 🚑
 
 
@@ -42,9 +42,9 @@
    
 ## 1-1. 📌 주제 선정 이유
 ### 👀 문제 인식
-최근 급격한 사회경제 상태변화와 의료기기 및 기술의 발달로 인해 보건의료서비스에 많은 변화가 일어나고 있다.<br>
-이와 같이 급변하는 의료환경에서 병원은 환자 확보 및 관리를 위해 고객(환자)의 이탈 방지가 가장 문제시되는 것으로 판단된다.<br>
-따라서 환자의 성별이나 나이, 질병의 종류나 응급실 이용 여부 등에 따른 이탈 확률을 계산하여 환자 관리의 효율을 높이고자 한다.<br>
+최근 급격한 사회경제 상태변화와 의료기기 및 기술의 발달로 인해 보건의료서비스에 많은 변화가 일어나고 있다.<br><br>
+이와 같이 급변하는 의료환경에서 병원은 환자 확보 및 관리를 위해 고객(환자)의 이탈 방지가 가장 문제시되는 것으로 판단된다.<br><br>
+따라서 환자의 성별이나 나이, 질병의 종류나 응급실 이용 여부 등에 따른 이탈 확률을 계산하여 환자 관리의 효율을 높이고자 한다.<br><br>
 
 > 특히 다음과 같은 이탈 유형 퇴원은 **병원 경영에 직접적인 손실**을 준다:
 >> Left Against Medical Advice (LAMA): 의학적 권고 거부 퇴원
@@ -97,7 +97,7 @@
 
 📂 사용 데이터: 뉴욕주 병원 입원 퇴원 데이터 (2010년)\
 ↳ Kaggle dataset: hospital-inpatient-discharges-sparcs.csv\
-↳ 크기: 156만 개\
+↳ 크기: 256만 개\
 ↳ 특성(컬럼): 총 37개 (범주형/수치형 혼합) / 이후 사용한 컬럼은 29개
 
 <br/><br/>
@@ -105,21 +105,24 @@
 
 ---
 
-# 2. 프로젝트 구조
+# 2. 프로젝트
+
+## 2-1. 프로젝트 구조
 ```
 SKN13-2nd-7Team
 ├── raw_data/
 │   └── hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv
 │
-├── models/
+├── test_models/
 │   ├── LogisticRegression_model.pkl              # 로지스틱 회귀 모델 (F1: )
 │   ├── RandomForestClassifier_model.pkl        # 랜덤 포레스트 분류 모델 (F1: )
 │   ├── XGBClassifier_model.pkl             	    # XGBoost 분류 모델 (F1: )
 │   └── GradientBoosting_model.pkl
 │
 ├── preprocessor/
-│   ├── preprocessor.pkl
-│   └── preprocessor2.pkl                     
+│   ├── cat_preprocessor
+│   ├── num_imputer
+│   └── num_scaler                    
 | 
 ├── utils/
 │   ├── cate_outlier.py
@@ -145,15 +148,16 @@ SKN13-2nd-7Team
 │   ├── data_preprocessing.csv  
 │   ├── label_encoder.pkl
 │   └── 보고서.pdf 
-│   
+│
+│
+├── main.ipynb/   
 └── README.md/                        
 ```
            
 ---
 
-# 2. 프로젝트 
 
-## 2-1. 사용한 기술 스택
+## 2-2. 사용한 기술 스택
 <br/><br/>
 <p align="center">
   <!-- 버전 관리 -->
@@ -256,12 +260,14 @@ SKN13-2nd-7Team
 
 ## 5-1. Train Set, Test Set의 크기 확장
 
-* 기본적으로 SMOTE는 Train set에만 적용되기 때문에, Test Set의 이탈 환자 수(y=1)가 너무 적어 모델 평가에 신뢰도가 떨어지는 문제가 있었다. 
+> 기본적으로 SMOTE는 Train set에만 적용되기 때문에, Test Set의 이탈 환자 수(y=1)가 너무 적어 모델 평가에 신뢰도가 떨어지는 문제가 있었다. 
 
-> 기존 size를 1:1 유지하면서 키워가며 최적의 size 찾음\
-> 사이즈 train = test = 0.02로 시작\
-> 최대 30%까지 점진적으로 확장하면서 적절한 분할 비율을 탐색했고\
-> Train : Test = 7:3 구성으로 안정적인 평가가 가능해졌다.
+* 전처리 결과 후에도 데이터 수가 250만개에 육박하는 거대 데이터였기에, trainset과 testset의 size 비율을 수정하며 진행.
+* trainset size : testset size = 1:1 유지하면서 키워가며 최적의 size 탐색(거대 데이터였기에 가능).
+* 사이즈 train = test = 0.02로 시작.
+* 최대 30%(train = test = 0.3)까지 점진적으로 확장하면서 적절한 분할 비율을 탐색.
+* Train : Test = 7:3 구성으로 안정적인 평가가 가능해졌다.
+ 
 <br/>
 
 
@@ -341,22 +347,22 @@ SKN13-2nd-7Team
 <br/><br/>
 
 
-### 5-4. 튜닝 과정과 결과 시각화 
+## 5-4. 튜닝 과정과 결과 시각화 
 
 * 과정
 
-<img src="readme_img/XGB boost - F1 score vs Sample size.png" width="800">
+<img src="readme_img/XGB boost - F1 score vs Sample size.png" width="700">
 
 <br/>
 * 결과
 
-<img src="readme_img/XGBoost-Threshold vs F1_precision_recall.png" width="800">
+<img src="readme_img/XGBoost-Threshold vs F1_precision_recall.png" width="700">
 
-<img src="readme_img/XGB boost- Confusion Matrix.png" width="800">
+<img src="readme_img/XGB boost- Confusion Matrix.png" width="700">
 
-<img src="readme_img/XGBoost - Precision Recall Curve .png" width="800">
+<img src="readme_img/XGBoost - Precision Recall Curve .png" width="700">
 
-<img src="readme_img/XGB boost- ROC Curve.png" width="800">
+<img src="readme_img/XGB boost- ROC Curve.png" width="700">
 
 
 <br/>
@@ -364,10 +370,10 @@ SKN13-2nd-7Team
 
 ---
 
-## 6. Feature Importances 파악하기 
+# 6. Feature Importances 파악하기 
 
 
-<img src="readme_img/top 10 Featuree Importances(XGBoost).png" width="800">
+<img src="readme_img/top 10 Featuree Importances(XGBoost).png" width="700">
 <br/>
 ### 환자 이탈 중요 요인
 - 성별
@@ -381,11 +387,18 @@ SKN13-2nd-7Team
 
 ---
 
-## 7.  주요 변수 영향도 및 이탈률 분석
+# 7.  주요 Feature 별 영향도 및 이탈률 분석
 Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요인을 선별하고, 각 변수별 이탈 패턴을 구체적으로 해석
 
+## 7-1. 스트림릿 구현
+<img src="readme_img/스트림릿 환자이탈가능성예측.png" width="800">
 
-### 성별 
+<br/>
+
+## 7-2. Feature 별 이탈률 확인 
+
+**성별** 
+
 <img src="readme_img/FI_성별에따른이탈률.png" width="500">
 
 > 남성 환자는 여성보다 약 2.5배 이상 높은 이탈률을 보였다.\
@@ -393,34 +406,34 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 
 <br/>
 
-### 응급실 방문 여부
+**응급실 방문 여부**
 <img src="readme_img/FI_응급실 방문 여부에 따른 이탈률.png" width="500">
 
 > 응급실을 거쳐 입원한 환자들이 비응급 환자보다 자의 퇴원 가능성이 2배 이상 높다.\
 > 응급 상황에서의 불안, 대기시간, 응급 처치 후 호전 등의 요인이 작용할 수 있다.
 <br/>
 
-### 인종
+**인종**
 <img src="readme_img/FI_인종별 환자 이탈률.png" width="500">
 
 > 흑인 환자군에서 이탈 비율이 상대적으로 높게 나옴.
 <br/>
 
-### APR 입원유형별
+**APR 입원유형별**
 <img src="readme_img/FI_APR 입원유형별 환자 이탈률.png" width="500">
 
 > 대부분의 이탈은 Medical 환자에서 발생하고 있으며, 이는 만성질환이나 비응급적 상황.\
 > Surgical 환자는 상대적으로 이탈률이 낮다. 이는 수술 전후의 집중적인 치료 및 모니터링 때문에 퇴원 결정이 쉽지 않기 때문.
 <br/>
 
-### 나이
+**나이**
 <img src="readme_img/FI_연령대별 환자 이탈률.png" width="500">
 
 > **고령층(70세 이상)**과 **소아/청소년(0~17세)**는 이탈률이 매우 낮으며, 이는 보호자, 의료 권고 순응도, 응급도와 관련 있을 수 있다.\
 > 병원은 사회활동이 활발한 연령층을 대상으로 한 조기 상담, 재정 부담 안내, 치료 이점 설명 등의 적극적 개입 전략이 필요하다.
 <br/>
 
-### 진단병명코드
+**진단병명코드**
 <img src="readme_img/FI_진단 코드별 환자 이탈률.png" width="500">
 
 > 약물·알코올 중독 관련 DRG에서 이탈률이 무려 100%.\
@@ -428,7 +441,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 > 의료 불신, 치료 장기화, 증상 경감 오판 등으로 인해 조기 이탈 위험이 크므로 의사-환자 커뮤니케이션 강화, 지속적 상담이 필요할 것으로 사료됨. 
 <br/>
 
-### 입원기간 
+**입원기간**
 <img src="readme_img/FI_입원일수별 환자 이탈률.png" width="500">
 
 > 입원 1일차 환자의 이탈률이 가장 높음.\
@@ -440,9 +453,9 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 
 ---
 
-## 8. 인사이트와 머신러닝 모델의 향후 활용 방안
+# 8. 인사이트와 머신러닝 모델의 향후 활용 방안
 
-### 8-1. 인사이트 
+## 8-1. 인사이트 
 
 - **이탈 환자(LAMA)** 는 전체 환자의 약 2.3% 수준이지만, 병원 운영 및 수익성 측면에서 비중 높은 리스크 요인임
 
@@ -453,7 +466,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 
 <br/><br/>
 
-### 8-2. 머신러닝 모델의 향후 활용 방안
+## 8-2. 머신러닝 모델의 향후 활용 방안
 
 <br/>
 
