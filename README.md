@@ -1,7 +1,6 @@
 ### SKN13-2nd-7Team
 
-# 환자 이탈 예측 프로젝트 
-Predicting Patient Disposition with Machine Learning
+# 환자 이탈 예측 프로젝트 Predicting Patient Disposition with Machine Learning
 <br/>
 
 ### 타겟 컬럼명 : Patient Disposition (환자의 퇴원 방식)<br>
@@ -386,7 +385,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 
 
 ### 성별 
-<img src="readme_img/FI_성별에따른이탈률.png" width="800">
+<img src="readme_img/FI_성별에따른이탈률.png" width="500">
 
 > 남성 환자는 여성보다 약 2.5배 이상 높은 이탈률을 보였다.\
 > 남성 환자에서 치료 순응도나 입원 지속율 관련 정책적 개입이 더 필요함을 시사한다.
@@ -394,34 +393,34 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 ### 응급실 방문 여부
-<img src="readme_img/FI_응급실 방문 여부에 따른 이탈률.png" width="800">
+<img src="readme_img/FI_응급실 방문 여부에 따른 이탈률.png" width="500">
 
 > 응급실을 거쳐 입원한 환자들이 비응급 환자보다 자의 퇴원 가능성이 2배 이상 높다.\
 > 응급 상황에서의 불안, 대기시간, 응급 처치 후 호전 등의 요인이 작용할 수 있다.
 <br/>
 
 ### 인종
-<img src="readme_img/FI_인종별 환자 이탈률.png" width="800">
+<img src="readme_img/FI_인종별 환자 이탈률.png" width="500">
 
 > 흑인 환자군에서 이탈 비율이 상대적으로 높게 나옴.
 <br/>
 
 ### APR 입원유형별
-<img src="readme_img/FI_APR 입원유형별 환자 이탈률.png" width="800">
+<img src="readme_img/FI_APR 입원유형별 환자 이탈률.png" width="500">
 
 > 대부분의 이탈은 Medical 환자에서 발생하고 있으며, 이는 만성질환이나 비응급적 상황.\
 > Surgical 환자는 상대적으로 이탈률이 낮다. 이는 수술 전후의 집중적인 치료 및 모니터링 때문에 퇴원 결정이 쉽지 않기 때문.
 <br/>
 
 ### 나이
-<img src="readme_img/FI_연령대별 환자 이탈률.png" width="800">
+<img src="readme_img/FI_연령대별 환자 이탈률.png" width="500">
 
 > **고령층(70세 이상)**과 **소아/청소년(0~17세)**는 이탈률이 매우 낮으며, 이는 보호자, 의료 권고 순응도, 응급도와 관련 있을 수 있다.\
 > 병원은 사회활동이 활발한 연령층을 대상으로 한 조기 상담, 재정 부담 안내, 치료 이점 설명 등의 적극적 개입 전략이 필요하다.
 <br/>
 
 ### 진단병명코드
-<img src="readme_img/FI_진단 코드별 환자 이탈률.png" width="800">
+<img src="readme_img/FI_진단 코드별 환자 이탈률.png" width="500">
 
 > 약물·알코올 중독 관련 DRG에서 이탈률이 무려 100%.\
 > HIV 관련 질환, 독성물질 섭취, 겸상 적혈구 빈혈 위기, 췌장 질환, 복통 등의 코드에서도 평균보다 높은 이탈률 관측.\
@@ -429,7 +428,7 @@ Feature Importance 분석을 통해 이탈률에 가장 큰 영향을 주는 요
 <br/>
 
 ### 입원기간 
-<img src="readme_img/FI_입원일수별 환자 이탈률.png" width="800">
+<img src="readme_img/FI_입원일수별 환자 이탈률.png" width="500">
 
 > 입원 1일차 환자의 이탈률이 가장 높음.\
 > 입원 초기에 치료 거부, 비용 문제, 설명 부족, 불만족 등의 이유로 빠르게 퇴원하는 경향이 반영될 수 있음.\
