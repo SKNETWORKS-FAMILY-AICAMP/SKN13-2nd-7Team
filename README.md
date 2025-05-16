@@ -12,7 +12,7 @@ Left Against Medical Advice (LAMA) - 의학적 권고에도 불구하고 스스�
 | 이름  | 이미지                                       | 이메일               |
 |:------:|:-------------------------------------------:|:--------------------:|
 | 남궁건우 |<img src="readme_img/건우.png " width="80">      | srrd1357@gmail.com |
-| 장진슬 | <img src="readme_img/진슬,png" width="80">        | gpendlr@gmail.com |
+| 장진슬 | <img src="readme_img/진슬.png" width="80">        | gpendlr@gmail.com |
 | 전진혁 | <img src="readme_img/진혁.png" width="80">       | jinhyeok2844@naver.com |
 | 홍채우 | <img src="readme_img/채우.png" width="80">   | codn1016@gmail.com |
 
@@ -42,13 +42,13 @@ Left Against Medical Advice (LAMA) - 의학적 권고에도 불구하고 스스�
 
 
 > 특히 다음과 같은 이탈 유형 퇴원은 **병원 경영에 직접적인 손실**을 준다:
-
+\
 > Left Against Medical Advice (LAMA): 의학적 권고 거부 퇴원
-> 
+\
 > LAMA: 의학적 권고에도 불구하고 스스로 병원을 떠나는 환자
 > 의사의 권고를 무시하고 자의로 퇴원하는 사례
 > 즉, 의료진이 입원 또는 치료를 권유했음에도 불구하고 환자 혹은 보호자가 자의적으로 퇴원을 결정하는 경우
-<br/><br/>
+\
 >> LAMA 환자들은 재입원율, 합병증 발생률, 사망률 등이 높은 것으로 보고되며, 
 >> 의료 기관의 수익 손실, 자원 낭비, 법적 책임 문제를 유발할 수 있어 의료 현장에서 중요한 이슈다.
 
@@ -89,9 +89,9 @@ Left Against Medical Advice (LAMA) - 의학적 권고에도 불구하고 스스�
 <br/><br/>
 
 📂 사용 데이터: 뉴욕주 병원 입원 퇴원 데이터 (2010년)\
-↳ Kaggle dataset: hospital-inpatient-discharges-sparcs.csv
-↳ 크기: 156만 개
-↳ 특성(컬럼): 총 37개 (범주형/수치형 혼합) / 이후 사용한 컬럼은 29개
+↳ Kaggle dataset: hospital-inpatient-discharges-sparcs.csv\
+↳ 크기: 156만 개\
+↳ 특성(컬럼): 총 37개 (범주형/수치형 혼합) / 이후 사용한 컬럼은 29개\
 
 <br/><br/>
 
