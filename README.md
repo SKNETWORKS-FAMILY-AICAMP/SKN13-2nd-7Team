@@ -341,13 +341,13 @@ SKN13-2nd-7Team
 <br/>
 * 결과
 
-<img src="readme_img/XGBoost-Threshold vs F1:precision:recall.png" width="240">
+<img src="readme_img/XGBoost-Threshold vs F1_precision_recall.png" width="800">
 
-<img src="readme_img/XGB boost- Confusion Matrix.png" width="240">
+<img src="readme_img/XGB boost- Confusion Matrix.png" width="800">
 
-<img src="readme_img/XGBoost - Precision Recall Curve .png" width="240">
+<img src="readme_img/XGBoost - Precision Recall Curve .png" width="800">
 
-<img src="readme_img/XGB boost- ROC Curve.png" width="240">
+<img src="readme_img/XGB boost- ROC Curve.png" width="800">
 
 
 <br/>
@@ -358,7 +358,7 @@ SKN13-2nd-7Team
 ## 6. Feature Importances 파악하기 
 
 
-<img src="readme_img/top 10 Featuree Importances(XGBoost).png" width="240">
+<img src="readme_img/top 10 Featuree Importances(XGBoost).png" width="800">
 <br/>
 ### 환자 이탈 중요 요인
 - 성별
