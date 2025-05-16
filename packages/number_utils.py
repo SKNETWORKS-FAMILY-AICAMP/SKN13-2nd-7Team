@@ -1,6 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import zscore
+import os
+img_dir = "images"
+os.makedirs(img_dir, exist_ok=True)
 
 # 이상치 시각화 함수
 def plot_zscore_outliers_all(df, columns, bins_list, z_thresh=2):
@@ -34,6 +37,7 @@ def plot_zscore_outliers_all(df, columns, bins_list, z_thresh=2):
         plt.ylabel("Count")
         plt.xlim(-5, 5)
         plt.grid(True)
+        plt.savefig(os.path.join(img_dir, f"zscore_outliers_{col}.png"))
         plt.legend()
 
     plt.tight_layout()

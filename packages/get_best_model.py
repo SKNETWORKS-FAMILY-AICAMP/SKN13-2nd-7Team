@@ -29,7 +29,7 @@ def get_best_model(name, model, params, preprocessor, X_train, y_train):
     rs = RandomizedSearchCV(
         pipeline,
         param_distributions=params,
-        n_iter=10,
+        n_iter=50,
         scoring={'accuracy' : 'accuracy', 
                 'precision' : 'precision', 
                 'recall' : 'recall', 
