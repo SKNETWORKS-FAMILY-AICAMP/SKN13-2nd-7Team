@@ -205,6 +205,7 @@ SKN13-2nd-7Team
 - 수치형 컬럼: 정규분포 Z-score 기반 이상치 제거
 - 범주형 컬럼: 빈도 낮은 범주(0.1% 미만)는 "Others" 통합
 
+<img src="readme_img/수치형이상치시각화.png" width="700">
 <br/><br/>
 
 ---
