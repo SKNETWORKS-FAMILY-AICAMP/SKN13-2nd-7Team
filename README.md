@@ -203,17 +203,17 @@ SKN13-2nd-7Team
 
 # 4. 🤖 모델링 및 학습 전략
 ## 4-1. 전처리 
-<br/><br/>
+<br/>
 | 처리 항목     | 사용 기법                                            |
 | --------- | ------------------------------------------------ |
 | 범주형 인코딩   | Tree 기반 → OrdinalEncoder / Logistic Rregression 기반 → OneHotEncoder |
 | 수치형 결측 대체 | KNN Imputer                                      |
 | 정규화       | StandardScaler                                   |
 | 클래스 불균형   | SMOTE (소수 클래스인 이탈 환자 과소표집 없이 오버샘플링)                      |
-
-
+<br/>
+<br/>
 ## 4-2. 모델 비교
-
+<br/>
 ### 📊 모델별 성능 비교 결과
 
 | Model             | Accuracy | Precision | Recall | F1 Score |
@@ -234,8 +234,8 @@ SKN13-2nd-7Team
 
 # 5. 선택한 모델 XGBoost 성능 높이기
 
-이탈 환자 (LAMA) 여부를 예측하기 위해 여러 분류 모델(Logistic Regression, Random Forest, XGBoost 등)을 학습했다.\
-특히 이탈 환자는 전체 환자의 2.3% 내외로 극심한 클래스 불균형 문제를 가지고 있어, 일반적인 모델 학습 방법만으로는 좋은 성능을 얻기 어려운 상황이였다. 
+* 이탈 환자 (LAMA) 여부를 예측하기 위해 여러 분류 모델(Logistic Regression, Random Forest, XGBoost 등)을 학습했다.
+* 특히 이탈 환자는 전체 환자의 2.3% 내외로 극심한 클래스 불균형 문제를 가지고 있어, 일반적인 모델 학습 방법만으로는 좋은 성능을 얻기 어려운 상황이였다. 
 
 
 > 3가지 전략을 통해 F1 Score를 극대화하는 방향으로 성능을 향상시키는 실험을 수행함.
@@ -245,11 +245,13 @@ SKN13-2nd-7Team
 
 ## 5-1. Train Set, Test Set의 크기 확장
 
-기본적으로 SMOTE는 Train set에만 적용되기 때문에, Test Set의 이탈 환자 수(y=1)가 너무 적어 모델 평가에 신뢰도가 떨어지는 문제가 있었다. 
+* 기본적으로 SMOTE는 Train set에만 적용되기 때문에, Test Set의 이탈 환자 수(y=1)가 너무 적어 모델 평가에 신뢰도가 떨어지는 문제가 있었다. 
 
 > 기존 size를 1:1 유지하면서 키워가며 최적의 size 찾음
 > 사이즈 train = test = 0.02로 시작, 최대 30%까지 점진적으로 확장하면서 적절한 분할 비율을 탐색했고, Train : Test = 7:3 구성으로 안정적인 평가가 가능해졌다.
 <br/>
+
+
 ## 5-2. 하이퍼파라미터 튜닝 (XGBoost 기준)
 
 
