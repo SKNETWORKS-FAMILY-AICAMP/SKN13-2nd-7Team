@@ -111,15 +111,16 @@ SKN13-2nd-7Team
 ├── raw_data/
 │   └── hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv
 │
-├── models/
+├── test_models/
 │   ├── LogisticRegression_model.pkl              # 로지스틱 회귀 모델 (F1: )
 │   ├── RandomForestClassifier_model.pkl        # 랜덤 포레스트 분류 모델 (F1: )
 │   ├── XGBClassifier_model.pkl             	    # XGBoost 분류 모델 (F1: )
 │   └── GradientBoosting_model.pkl
 │
 ├── preprocessor/
-│   ├── preprocessor.pkl
-│   └── preprocessor2.pkl                     
+│   ├── cat_preprocessor
+│   ├── num_imputer
+│   └── num_scaler                    
 | 
 ├── utils/
 │   ├── cate_outlier.py
@@ -145,7 +146,9 @@ SKN13-2nd-7Team
 │   ├── data_preprocessing.csv  
 │   ├── label_encoder.pkl
 │   └── 보고서.pdf 
-│   
+│
+│
+├── main.ipynb/   
 └── README.md/                        
 ```
            
