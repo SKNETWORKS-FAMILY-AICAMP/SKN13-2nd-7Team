@@ -57,3 +57,4 @@ models/
 
 # raw data
 raw_data/
+app/data/cleaned_hospital_discharges.csv
