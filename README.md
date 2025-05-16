@@ -1,8 +1,7 @@
 ### SKN13-2nd-7Team
 
 # 환자 이탈 예측 프로젝트 
-# Predicting Patient Disposition with Machine Learning
----
+## Predicting Patient Disposition with Machine Learning
 <br/>
 
 ### 타겟 컬럼명 : Patient Disposition (환자의 퇴원 방식)<br>
