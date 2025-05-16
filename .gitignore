@@ -51,3 +51,10 @@ Thumbs.db
 
 # pip dependency lock (선택)
 pip-log.txt
+
+# models pkl
+models/
+
+# raw data
+raw_data/
+app/data/cleaned_hospital_discharges.csv

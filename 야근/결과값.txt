@@ -1,0 +1,162 @@
+
+# 문제 제기 : testset의 y값이 너무 적음
+# trainset은 smote해서 y값의 양이 문제되지 않지만 testset은 smote하지 않으므로 y값이 너무 적다.
+# 어차피 train, test set을 전체 데이터의 일부를 이용할거, testset을 크게 뽑아도되지않을까?
+# GPT 문의 결과 100만개가 넘는 큰데이터는 trainset : testset = 1:1로 뽑아도된다!
+
+# 사이즈 train = test = 0.02로 시작
+
+LogisticRegression: Accuracy=0.9709, Precision=0.2851, Recall=0.1897, F1 Score=0.2278
+KNNNeighbors: Accuracy=0.9494, Precision=0.1681, Recall=0.3126, F1 Score=0.2186
+Decision Tree: Accuracy=0.9662, Precision=0.3003, Recall=0.3722, F1 Score=0.3324
+Random Forest: Accuracy=0.9841, Precision=0.9883, Recall=0.3010, F1 Score=0.4614
+Gradient Boosting: Accuracy=0.9841, Precision=0.9911, Recall=0.2983, F1 Score=0.4586
+XGBoost: Accuracy=0.9831, Precision=0.8295, Recall=0.3206, F1 Score=0.4624
+
+
+>>>>>>>>>>>✅Best Parameters(XGBoost):
+{'subsample': 1.0, 'n_estimators': 200, 'max_depth': 5, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 1.0}
+📊 Test Set Evaluation (Best XGBoost):
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     48510
+           1       0.89      0.32      0.47      1123
+
+    accuracy                           0.98     49633
+   macro avg       0.94      0.66      0.73     49633
+weighted avg       0.98      0.98      0.98     49633
+
+F1 Score (Test): 0.4739
+
+
+
+
+
+
+>>>>>>>>>>>✅ Best Parameters (Random Forest):
+{'n_estimators': 100, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 20}
+📊 Test Set Evaluation (Best Random Forest):
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     48510
+           1       0.99      0.30      0.46      1123
+
+    accuracy                           0.98     49633
+   macro avg       0.99      0.65      0.73     49633
+weighted avg       0.98      0.98      0.98     49633
+
+F1 Score (Test): 0.4610
+
+
+
+
+
+
+>>>>>>>>>>>✅ Best Parameters (Gradient Boosting):
+{'subsample': 0.6, 'n_estimators': 300, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_depth': 7, 'learning_rate': 0.05}
+
+📊 Test Set Evaluation (Best Gradient Boosting):
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     48510
+           1       0.86      0.32      0.46      1123
+
+    accuracy                           0.98     49633
+   macro avg       0.92      0.66      0.73     49633
+weighted avg       0.98      0.98      0.98     49633
+
+F1 Score (Test): 0.4645
+
+
+
+
+
+
+
+
+
+이후 size를 1:1 유지하면서 키워가며 최적의 size 찾음(사진 참조)
+>>>30%로 마무리
+
+
+
+>>>>>>>>>>>>size = 0.05로 threshold 찾기1
+✅ Best Parameters:
+{'subsample': 1.0, 'n_estimators': 200, 'max_depth': 4, 'learning_rate': 0.3, 'gamma': 0.5, 'colsample_bytree': 1.0}
+
+📊 Test Set Evaluation (Best XGBoost):
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99    121273
+           1       0.93      0.31      0.47      2809
+
+    accuracy                           0.98    124082
+   macro avg       0.96      0.66      0.73    124082
+weighted avg       0.98      0.98      0.98    124082
+
+F1 Score (Test): 0.4697
+Threshold | F1 Score | Precision | Recall
+-------------------------------------------
+     0.10 |   0.3737 |    0.2759 | 0.5792
+     0.15 |   0.4259 |    0.3705 | 0.5009
+     0.20 |   0.4525 |    0.4638 | 0.4418
+     0.25 |   0.4705 |    0.5667 | 0.4023
+     0.30 |   0.4777 |    0.6606 | 0.3742
+     0.35 |   0.4784 |    0.7525 | 0.3507
+     0.40 |   0.4781 |    0.8281 | 0.3361
+     0.45 |   0.4734 |    0.8841 | 0.3232
+     0.50 |   0.4697 |    0.9257 | 0.3147
+     0.55 |   0.4670 |    0.9591 | 0.3087
+
+✅ 최적 Threshold: 0.35, F1 Score: 0.4784 >>>>>>>첫번째 사진 참고
+
+
+
+>>>>>>>>>>>>size = 0.05로 threshold 찾기2
+✅ Best Parameters:
+{'subsample': 1.0, 'n_estimators': 200, 'max_depth': 4, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 1.0}
+
+📊 Test Set Evaluation (Best XGBoost):
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99    121273
+           1       0.96      0.31      0.46      2809
+
+    accuracy                           0.98    124082
+   macro avg       0.97      0.65      0.73    124082
+weighted avg       0.98      0.98      0.98    124082
+
+F1 Score (Test): 0.4627
+Threshold | F1 Score | Precision | Recall
+-------------------------------------------
+     0.10 |   0.3706 |    0.2720 | 0.5813
+     0.15 |   0.4287 |    0.3760 | 0.4984
+     0.20 |   0.4593 |    0.4861 | 0.4354
+     0.25 |   0.4774 |    0.6045 | 0.3944
+     0.30 |   0.4807 |    0.7070 | 0.3642
+     0.35 |   0.4780 |    0.7929 | 0.3421
+     0.40 |   0.4734 |    0.8736 | 0.3247
+     0.45 |   0.4674 |    0.9262 | 0.3126
+     0.50 |   0.4627 |    0.9575 | 0.3051
+     0.55 |   0.4630 |    0.9782 | 0.3033
+
+✅ 최적 Threshold: 0.30, F1 Score: 0.4807 >>>>>>>두번째 사진 참고
+
+
+train=test size 0.3으로 최적의 모델 저장 완료
+불러들일땐?
+
+```
+# 모델 로드
+loaded_model = joblib.load('best_xgb_model.pkl')
+
+# threshold 로드
+with open('best_threshold.json', 'r') as f:
+    threshold_data = json.load(f)
+loaded_threshold = threshold_data['threshold']
+
+# 예측 예시
+y_proba = loaded_model.predict_proba(X_test_scaled)[:, 1]
+y_pred = (y_proba >= loaded_threshold).astype(int)
+```
+

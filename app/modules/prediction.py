@@ -1,48 +1,246 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import pickle
+
+
+cate_columns = ["Gender", "Age Group", "Race"]
 
 # 모델 불러오기 함수
 @st.cache_resource
 def load_model():
-    # with open("model.pkl", "rb") as f:
-    #     model = pickle.load(f)
-    # return model
-    return "model"
+    with open("../best_xgb_model.pkl", "rb") as f:
+        model = pickle.load(f)
+    return model
 
+# 병명 → 영문명으로 매핑
+disease_name_to_eng_name = {
+    "약물 및 알코올 남용 또는 의존, 자의 퇴원": "DRUG & ALCOHOL ABUSE OR DEPENDENCE, LEFT AGAINST MEDICAL ADVICE",
+    "주요 HIV 관련 질환이 있는 경우": "HIV W MAJOR HIV RELATED CONDITION",
+    "비의약품 물질에 의한 중독": "TOXIC EFFECTS OF NON-MEDICINAL SUBSTANCES",
+    "겸상적혈구 빈혈 위기": "SICKLE CELL ANEMIA CRISIS",
+    "알코올성 간 질환": "ALCOHOLIC LIVER DISEASE",
+    "췌장 장애 (악성종양 제외)": "DISORDERS OF PANCREAS EXCEPT MALIGNANCY",
+    "기타 임신 전 진단 (산전 질환 등)": "OTHER ANTEPARTUM DIAGNOSES",
+    "복통": "ABDOMINAL PAIN"
+}
+
+eng_name_to_disease_code = {
+    'DRUG & ALCOHOL ABUSE OR DEPENDENCE, LEFT AGAINST MEDICAL ADVICE': '770',
+    'HIV W MAJOR HIV RELATED CONDITION': '892', 
+    'TOXIC EFFECTS OF NON-MEDICINAL SUBSTANCES': '816', 
+    'SICKLE CELL ANEMIA CRISIS': '662', 
+    'ALCOHOLIC LIVER DISEASE': '280', 
+    'DISORDERS OF PANCREAS EXCEPT MALIGNANCY': '282', 
+    'OTHER ANTEPARTUM DIAGNOSES': '566', 
+    'ABDOMINAL PAIN': '251'
+}
+
+# 입원 유형 -> 영문 매핑 딕셔너리
+# type_of_admission_to_eng = {
+#     "긴급":"Emergency",
+#     "신생아":"Newborn",
+#     "선택":"Elective",
+#     "응급":"Urgent",
+#     "이용 불가":"Not Available",
+#     "기타":"Others"
+# }
+
+# 나이 그룹 매핑 함수
+def get_age_group(age):
+    if age <= 17:
+        return "0 to 17"
+    elif age <= 29:
+        return "18 to 29"
+    elif age <= 49:
+        return "30 to 49"
+    elif age <= 69:
+        return "50 to 69"
+    else:
+        return "70 or Older"
 
 # 페이지 함수 - app.py에서 페이지 라우팅 할 때 사용
 def show():
     #모델 로드
     model = load_model()
 
-    # 변수 선언
-    pred_result = 13.6
-
     # 페이지 title
     st.title("환자 이탈 가능성 예측")
 
-    # 성별 선택 selectbox
+    # 성별 selectbox
     gender = st.selectbox(
         "성별",
         ("여성", "남성", "선택 안함"),
     )
     st.write(f"선택된 성별:{gender}")
 
-    # 인종 선택 selectbox
+    # 인종 selectbox
     race = st.selectbox(
         "인종",
         ("백인", "흑인", "그 외 인종"),
     )
     st.write(f"선택된 성별:{race}")
 
+    # # 입원 유형 selectbox
+    # type_of_admission = st.selectbox(
+    #     "입원 유형",
+    #     (
+    #         "긴급",
+    #         "신생아",
+    #         "선택",
+    #         "응급",
+    #         "이용 불가",
+    #         "기타"
+    #     )
+    # )
+    # st.write(f"선택된 입원 유형:{type_of_admission}")
+
+    # 병명 선택 selectbox
+    disease_name = st.selectbox(
+        "병명",
+        (
+            "겸상적혈구 빈혈 위기",
+            "기타 임신 전 진단 (산전 질환 등)",
+            "복통",
+            "비의약품 물질에 의한 중독",
+            "알코올성 간 질환",
+            "약물 및 알코올 남용 또는 의존, 자의 퇴원",
+            "췌장 장애 (악성종양 제외)",
+            "주요 HIV 관련 질환이 있는 경우"
+        ),
+    )
+    st.write(f"선택된 병명:{disease_name}")
+
+    # emergency_department_used = st.checkbox("응급실 이용 여부")
+    col1, col2, col3 = st.columns([2, 1, 5])  # 비율 조정 가능
+    with col1:
+        st.markdown("#### 응급실 이용 여부")
+    with col2:
+        emergency_department_used = st.checkbox("")
+    with col3:
+        st.write("")
+    st.write(f"응급실 이용 여부: {emergency_department_used}")
+
     # 나이 선택 slider
     age = st.slider('나이', 1, 120, 30, 1)
-    st.text(f'선택된 나이:{age}')
+    st.text(f'선택된 나이:{age}세')
 
-    # 출생 체중 선택 slider
-    birth_weight = st.slider('출생 체중', 0.0, 4.5, 3.0, 0.1)
-    st.text(f'선택된 출생 체중:{birth_weight}')
+    # 입원 기간 slider
+    length_of_stay = st.slider("입원 기간", 0, 20, 0, 1)
+    st.text(f'입원 기간:{length_of_stay}일')
 
-    st.button("예측하기")
-    st.markdown(f"### 이탈 가능성 예측 결과:{pred_result}%")
+    # # 총 비용 slider
+    # total_costs = st.slider("총 비용($)", 0, 126559, 63000, 1)
+    # st.text(f'총 비용:{total_costs}$')
+
+    # # 총 청구 금액 slider
+    # total_charges = st.slider("총 청구 금액($)", 0, 55346, 25000, 1)
+    # st.text(f'총 청구 금액:{total_costs}$')
+
+
+    # 매핑 처리
+    gender_map = {"여성": "F", "남성": "M", "선택 안함": "U"} # 성별 변환
+    race_map = {"백인": "White", "흑인": "Black/African American", "그 외 인종": "Other Race"} # 인종 변환
+    disease = disease_name_to_eng_name[disease_name] # 질병 영문명으로 변환
+    disease_code = eng_name_to_disease_code[disease] # 질병 코드로 변환
+    # type_of_admission_eng = type_of_admission_to_eng[type_of_admission] # 입원 유형 영어로 변환
+    age_group = get_age_group(age) # 나이 범위로 변환
+    emergency_department_indicator = 'Y' if emergency_department_used else 'N'
+
+    gender_input = gender_map[gender]
+    race_input = race_map.get(race, "Unknown")
+
+    pred_result = 0
+
+    # 예측 실행
+    if st.button("예측하기"):
+        # 모델 입력 포맷 구성 (예시: DataFrame 형태)
+        input_df = pd.DataFrame([{
+            ### ✅ 입력받는 데이터
+            "Gender": gender_input,
+            "Race": race_input,
+            "APR DRG Description": disease,
+            "APR DRG Code": disease_code,
+            "Emergency Department Indicator": emergency_department_indicator,
+            "Age Group": age_group,
+            "Length of Stay": length_of_stay,
+
+            ### 🧪 나머지 default 값 지정
+            "Health Service Area": "New York City",
+            "Hospital County": "Manhattan",
+            "Facility ID": 1456.0,
+            "Facility Name": "Mount Sinai Hospotal",
+            "Ethnicity": "Not Span/Hispanic",
+            "Discharge Year": 2010,
+            "CCS Diagnosis Code": 218.0,
+            "CCS Diagnosis Description": "LIVEBORN",
+            "CCS Procedure Code": 0.0,
+            "CCS Procedure Description": "NO PROC",
+            "APR MDC Code": 5,
+            "APR MDC Description": "Diseases and Disorders of the Circulatory System",
+            "APR Severity of Illness Code": 1,
+            "APR Severity of Illness Description": "Minor",
+            "APR Risk of Mortality": "Minor",
+            "APR Medical Surgical Description": "Medical",
+            "Source of Payment 1": "Insurance Company",
+            "Abortion Edit Indicator": "N",
+            "Type of Admission": "Emergency",
+            "Total Charges": 5400.0,
+            "Total Costs": 1675.06
+        }])
+        
+        # 전체 피처 값 확인
+        # print("***************************************")
+        # print("************전체 피처 값 확인***********")
+        # for col in input_df.columns:
+        #     print(f"{col}: {input_df[col][0]}")
+
+        input_df = input_df.astype({
+            # 숫자형 (정수)
+            "APR DRG Code": "int",
+            "Length of Stay": "int",
+            "Discharge Year": "int",
+            "CCS Diagnosis Code": "float",  # 일부는 결측이 있을 수 있으니 float
+            "CCS Procedure Code": "float",
+            "APR MDC Code": "int",
+            "APR Severity of Illness Code": "int",
+            "Facility ID": "float",
+
+            # 숫자형 (실수)
+            "Total Charges": "float",
+            "Total Costs": "float",
+
+            # 범주형 (카테고리)
+            "Gender": "category",
+            "Race": "category",
+            "Age Group": "category",
+            "Type of Admission": "category",
+            "Emergency Department Indicator": "category",
+            "Health Service Area": "category",
+            "Hospital County": "category",
+            "Facility Name": "category",
+            "Ethnicity": "category",
+            "CCS Diagnosis Description": "category",
+            "CCS Procedure Description": "category",
+            "APR DRG Description": "category",
+            "APR MDC Description": "category",
+            "APR Severity of Illness Description": "category",
+            "APR Risk of Mortality": "category",
+            "APR Medical Surgical Description": "category",
+            "Source of Payment 1": "category",
+            "Abortion Edit Indicator": "category"
+        })
+
+        # with open("category_levels.pkl", "rb") as f:
+        #     category_levels = pickle.load(f)
+
+        # for col in cate_columns:
+        #     input_df[col] = input_df[col].astype(pd.CategoricalDtype(categories=category_levels[col]))
+
+        pred_prob = model.predict_proba(input_df)[0][1]
+        pred_result = round(pred_prob * 100, 1)
+    
+    # 임시 결과 - 수정 필요 !!!!
+    # pred_result = 13.6
+    # st.button("예측하기")
+    st.markdown(f"### 이탈 가능성 예측 결과: **{pred_result}%**")
