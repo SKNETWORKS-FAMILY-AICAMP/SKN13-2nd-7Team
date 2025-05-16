@@ -241,8 +241,8 @@ SKN13-2nd-7Team
 | XGBoost           | 0.9831   | 0.8295    | 0.3206 | **0.4624** |
 
 
->> F1 Score 기준으로 가장 균형 잡힌 성능을 보인 **XGBoost**가 실용성과 성능 모두에서 우수하다고 인식.
- >> 그 중 F1 Score 기준, XGBoost 모델이 가장 우수하여, XGBoost 모델을 선정. 
+>> F1 Score 기준으로 가장 균형 잡힌 성능을 보인 **XGBoost**가 실용성과 성능 모두에서 우수하다고 인식.<br>
+>>  그 중 F1 Score 기준, XGBoost 모델이 가장 우수하여, XGBoost 모델을 선정. 
 
 <br/><br/>
 
