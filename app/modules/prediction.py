@@ -72,14 +72,14 @@ def show():
         "성별",
         ("여성", "남성", "선택 안함"),
     )
-    st.write(f"선택된 성별:{gender}")
+    # st.write(f"선택된 성별:{gender}")
 
     # 인종 selectbox
     race = st.selectbox(
         "인종",
         ("백인", "흑인", "그 외 인종"),
     )
-    st.write(f"선택된 성별:{race}")
+    # st.write(f"선택된 성별:{race}")
 
     # # 입원 유형 selectbox
     # type_of_admission = st.selectbox(
@@ -109,34 +109,31 @@ def show():
             "주요 HIV 관련 질환이 있는 경우"
         ),
     )
-    st.write(f"선택된 병명:{disease_name}")
+    # st.write(f"선택된 병명:{disease_name}")
 
-    # emergency_department_used = st.checkbox("응급실 이용 여부")
-    col1, col2, col3 = st.columns([2, 1, 5])  # 비율 조정 가능
+    col1, col2, col3 = st.columns([1, 1, 7])
     with col1:
-        st.markdown("#### 응급실 이용 여부")
+        st.markdown(
+            """
+            <div style="display: flex; align-items: center; height: 45px;">
+                응급실 이용 여부
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     with col2:
         emergency_department_used = st.checkbox("")
     with col3:
         st.write("")
-    st.write(f"응급실 이용 여부: {emergency_department_used}")
+    # st.write(f"응급실 이용 여부: {emergency_department_used}")
 
     # 나이 선택 slider
     age = st.slider('나이', 1, 120, 30, 1)
-    st.text(f'선택된 나이:{age}세')
+    # st.text(f'선택된 나이:{age}세')
 
     # 입원 기간 slider
     length_of_stay = st.slider("입원 기간", 0, 20, 0, 1)
-    st.text(f'입원 기간:{length_of_stay}일')
-
-    # # 총 비용 slider
-    # total_costs = st.slider("총 비용($)", 0, 126559, 63000, 1)
-    # st.text(f'총 비용:{total_costs}$')
-
-    # # 총 청구 금액 slider
-    # total_charges = st.slider("총 청구 금액($)", 0, 55346, 25000, 1)
-    # st.text(f'총 청구 금액:{total_costs}$')
-
+    # st.text(f'입원 기간:{length_of_stay}일')
 
     # 매핑 처리
     gender_map = {"여성": "F", "남성": "M", "선택 안함": "U"} # 성별 변환
