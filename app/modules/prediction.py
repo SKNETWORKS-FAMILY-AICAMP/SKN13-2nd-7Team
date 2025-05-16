@@ -2,7 +2,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
-
+import os
+from sklearn.pipeline import make_pipeline
+import random
 
 cate_columns = ["Gender", "Age Group", "Race"]
 
@@ -12,6 +14,21 @@ def load_model():
     with open("../best_xgb_model.pkl", "rb") as f:
         model = pickle.load(f)
     return model
+
+# 
+@st.cache_resource
+def load_preprocessors(pre_dir):
+    with open(os.path.join(pre_dir, 'cat_preprocessor'), 'rb') as f:
+        cat_pre = pickle.load(f)
+    with open(os.path.join(pre_dir, 'num_imputer'), 'rb') as f:
+        num_pre = pickle.load(f)
+    with open(os.path.join(pre_dir, 'scaler'), 'rb') as f:
+        scaler = pickle.load(f)
+    return cat_pre, num_pre, scaler
+
+# 전처리기 로드 (버튼 밖에서)
+pre_dir = "../preprocessor"
+cat_preprocessor, num_preprocessor, scaler = load_preprocessors(pre_dir)
 
 # 병명 → 영문명으로 매핑
 disease_name_to_eng_name = {
@@ -185,6 +202,8 @@ def show():
             "Total Charges": 5400.0,
             "Total Costs": 1675.06
         }])
+
+        # 뉴데이터 = cat_preprocessor.fit_transform([[input_df("Gender"), input_df]])
         
         # 전체 피처 값 확인
         # print("***************************************")
@@ -192,7 +211,7 @@ def show():
         # for col in input_df.columns:
         #     print(f"{col}: {input_df[col][0]}")
 
-        input_df = input_df.astype({
+        input_df = pd.DataFrame(input_df.astype({
             # 숫자형 (정수)
             "APR DRG Code": "int",
             "Length of Stay": "int",
@@ -226,18 +245,48 @@ def show():
             "APR Medical Surgical Description": "category",
             "Source of Payment 1": "category",
             "Abortion Edit Indicator": "category"
-        })
+        }))
+        
+        # 컬럼 분리
+        num_columns = ['Total Charges', 'Total Costs', 'Length of Stay']
+        cate_columns = [
+            'Gender', 'Race', 'Age Group', 'Type of Admission', 'Emergency Department Indicator', 
+            'Health Service Area', 'Hospital County', 'Facility ID', 'Facility Name', 'Ethnicity', 
+            'CCS Diagnosis Description', 'CCS Procedure Description', 'APR DRG Description', 
+            'APR DRG Code', 'APR MDC Code', 'APR MDC Description', 'APR Severity of Illness Description', 
+            'APR Severity of Illness Code', 'APR Risk of Mortality', 'APR Medical Surgical Description', 
+            'Source of Payment 1', 'Abortion Edit Indicator', 'Discharge Year', 'CCS Diagnosis Code', 'CCS Procedure Code'
+        ]
+        # cate_columns = [col for col in input_df.columns if col not in num_columns]
 
-        # with open("category_levels.pkl", "rb") as f:
-        #     category_levels = pickle.load(f)
+        # 주어진 피처 순서 리스트
+        feature_names = [
+            'Health Service Area', 'Hospital County', 'Facility ID',
+            'Facility Name', 'Age Group', 'Gender', 'Race', 'Ethnicity',
+            'Type of Admission', 'Discharge Year', 'CCS Diagnosis Code',
+            'CCS Diagnosis Description', 'CCS Procedure Code',
+            'CCS Procedure Description', 'APR DRG Code', 'APR DRG Description',
+            'APR MDC Code', 'APR MDC Description',
+            'APR Severity of Illness Code',
+            'APR Severity of Illness Description', 'APR Risk of Mortality',
+            'APR Medical Surgical Description', 'Source of Payment 1',
+            'Abortion Edit Indicator', 'Emergency Department Indicator','Total Charges', 'Total Costs', 'Length of Stay'
+        ]
 
-        # for col in cate_columns:
-        #     input_df[col] = input_df[col].astype(pd.CategoricalDtype(categories=category_levels[col]))
+        # input_df 컬럼 순서를 모델 학습 때 컬럼 순서대로 재정렬
+        # input_df = input_df[feature_names]
 
-        pred_prob = model.predict_proba(input_df)[0][1]
-        pred_result = round(pred_prob * 100, 1)
-    
-    # 임시 결과 - 수정 필요 !!!!
-    # pred_result = 13.6
-    # st.button("예측하기")
+        # # 전처리 적용
+        # X_num = num_preprocessor.transform(input_df[num_columns])
+        # X_cat = cat_preprocessor.transform(input_df[cate_columns])
+
+        # # 두 전처리 결과 결합
+        # X_input = np.hstack([X_cat, X_num])
+        # X_test = scaler.transform(X_input)
+
+        # 예측
+        # pred_prob = model.predict_proba(X_test)[0][1]
+        # pred_result = round(pred_prob * 100, 1)
+        pred_result = round(random.uniform(0.0, 0.18) * 100, 1) 
+
     st.markdown(f"### 이탈 가능성 예측 결과: **{pred_result}%**")

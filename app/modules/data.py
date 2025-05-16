@@ -4,7 +4,7 @@ import pandas as pd
 # ========================
 # 전역 상수 정의
 # ========================
-FEATHER_FILE_PATH = "data/hospital_discharges_cleaned.feather"
+FEATHER_FILE_PATH = "data/hospital_discharges_sampled.feather"
 TABLE_HEIGHT = 600
 TABLE_WIDTH = 1200
 NUMERIC_COLUMNS = ['Total Charges', 'Total Costs', 'Length of Stay']
