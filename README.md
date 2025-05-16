@@ -352,6 +352,8 @@ SKN13-2nd-7Team
 * 과정
 
 <img src="readme_img/XGB boost - F1 score vs Sample size.png" width="700">
+<br/>
+<img src="readme_img/F1score비교.png" width="700">
 
 <br/>
 * 결과
