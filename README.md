@@ -27,7 +27,7 @@ Left Against Medical Advice (LAMA) - 의학적 권고에도 불구하고 스스�
 | 모델링            | 남궁건우, 전진혁         | 코드                  | csv파일    |
 | 이진분류 및 모델링 시각화| 장진슬, 전진혁                |  코드                | 데이터 전처리, 모델링  |
 | 코드 취합           | 전진혁, 남궁건우                | DB 데이터              | 데이터 전처리, 모델링, 시각화 |
-| Streamlit 구현    | 홍채우               | Streamlit 화면         | 코드 기반  |
+| Streamlit 구현    | 홍채우, 남궁건우          | Streamlit 화면         | 코드 기반  |
 | README.md 작성     | 장진슬                | GitHub README.md      | GitHub  |
 | 최종 점검          | 남궁건우, 전진혁, 장진슬, 홍채우                  | -               | -  |
 
@@ -205,16 +205,21 @@ SKN13-2nd-7Team
 # 4. 🤖 모델링 및 학습 전략
 ## 4-1. 전처리 
 <br/>
+
 | 처리 항목     | 사용 기법                                            |
 | --------- | ------------------------------------------------ |
 | 범주형 인코딩   | Tree 기반 → OrdinalEncoder / Logistic Rregression 기반 → OneHotEncoder |
 | 수치형 결측 대체 | KNN Imputer                                      |
 | 정규화       | StandardScaler                                   |
 | 클래스 불균형   | SMOTE (소수 클래스인 이탈 환자 과소표집 없이 오버샘플링)                      |
+
 <br/>
 <br/>
+
 ## 4-2. 모델 비교
+
 <br/>
+
 ### 📊 모델별 성능 비교 결과
 
 | Model             | Accuracy | Precision | Recall | F1 Score |
@@ -334,26 +339,32 @@ SKN13-2nd-7Team
 
 ### 5-4. 튜닝 과정과 결과 시각화 
 
-* 과정 
+* 과정
+
 <img src="readme_img/XGB boost - F1 score vs Sample size.png>
 
-* 결과 
-<img src="readme_img/XGBoost-Threshold vs F1:precision:recall.png>
+<br/>
+* 결과
 
-<img src="readme_img/XGB boost- Confusion Matrix.png>
+<img src="readme_img/XGBoost-Threshold vs F1_precision_recall.png" width="800">
 
-<img src="readme_img/XGBoost - Precision Recall Curve .png>
+<img src="readme_img/XGB boost- Confusion Matrix.png" width="800">
 
-<img src="readme_img/XGB boost- ROC Curve.png>
+<img src="readme_img/XGBoost - Precision Recall Curve .png" width="800">
+
+<img src="readme_img/XGB boost- ROC Curve.png" width="800">
 
 
+<br/>
+<br/>
 
+---
 
 ## 6. Feature Importances 파악하기 
 
 
-<img src="readme_img/top 10 Featuree Importances(XGBoost).png>
-
+<img src="readme_img/top 10 Featuree Importances(XGBoost).png" width="800">
+<br/>
 ### 환자 이탈 중요 요인
 - 성별
 - 나이
