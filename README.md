@@ -282,7 +282,7 @@ SKN13-2nd-7Team
 
 ✅ **최적 Threshold = 0.30**,  
 → **F1 Score가 0.5153**으로 **기본보다 향상**됨
-
+<br/>
 
 ### F1 score 향상 전 XGBoost 성능 
 | Model             | Accuracy | Precision | Recall | F1 Score |
@@ -300,25 +300,7 @@ SKN13-2nd-7Team
 
 >> 이는 실제 의료 시스템에서 실제 이탈 환자를 더 정확히 탐지하는 데에 기여할 수 있을 것이다.
 
-<br/>
-<br/>
 
-## 6. 시각화 결과 
-
-
-* Radar Chart: 모델별 성능 비교 (Precision, Recall, F1)
-
-* PR Curve: 민감한 환자 이탈 탐지 능력 확인
-
-* ROC Curve: 전체 분류 성능
-
-* Confusion Matrix: 최종 XGBoost 모델 기준 평가
-
-
-사진 올리기~~ <img>
-
-
-## 7. 모델링 후 인사이트 
 
 주요 인사이트
 LAMA는 **전체의 약 2%**밖에 되지 않아 클래스 불균형 문제를 반드시 고려해야 함
@@ -329,9 +311,38 @@ Threshold 조정은 모델의 실용성과 경고 민감도 사이 균형을 맞
 
 병원이 실제로 활용할 경우, "최대한 많은 이탈 환자를 사전 탐지"하는 것이 중요 → Recall 중심의 설계가 바람직
 
+
+<br/>
+<br/>
+
+### 5-4. 튜닝 과정 
+
+# readme_img/ XGBoost Threshold vs F1 / Precision / Recall 얘 넣기
+
+# readme_img/ XGB boost- Confusion Matrix.png
+
+# readme_img / 프리시전 리컬커브.png
+
+# XGB boost- ROC Curve.png
+
+# XGB boost- F1 score & Sample size 
+
+
+
+
+## 6. Feature Importances 파악하기 
+
+
+# top 10 Featuree Importances(XGBoost).png
+
+# 젠더별 , 응급별, 인종별, 병명 코드별, 나이, 입원 기간 그래프 만들기!!!!!!!!! 
+
+
+
+
 <br/><br/>
 
-
+## 7. 
 
 <br/><br/>
 
