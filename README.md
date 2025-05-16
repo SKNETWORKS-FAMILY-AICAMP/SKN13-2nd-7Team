@@ -349,14 +349,16 @@ SKN13-2nd-7Team
 
 ## 5-4. 튜닝 과정과 결과 시각화 
 
-* 과정
+### 과정
 
 <img src="readme_img/XGB boost - F1 score vs Sample size.png" width="700">
 <br/>
 <img src="readme_img/F1score비교.png" width="700">
 
 <br/>
-* 결과
+---
+
+### 결과
 
 <img src="readme_img/XGBoost-Threshold vs F1_precision_recall.png" width="700">
 
