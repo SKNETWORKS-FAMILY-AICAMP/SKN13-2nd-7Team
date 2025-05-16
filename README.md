@@ -233,6 +233,7 @@ SKN13-2nd-7Team
 
 | Model             | Accuracy | Precision | Recall | F1 Score |
 |------------------|----------|-----------|--------|----------|
+| LogisticRegression | 0.9709  | 0.2851   | 0.1897 | 0.2278  |
 | KNNNeighbors      | 0.9494   | 0.1681    | 0.3126 | 0.2186   |
 | Decision Tree     | 0.9662   | 0.3003    | 0.3722 | 0.3324   |
 | Random Forest     | 0.9841   | 0.9883    | 0.3010 | 0.4614   |
